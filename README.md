@@ -12,7 +12,7 @@ Season two is now open for summit a new idea at [MKT4D issues](https://github.co
 
 Each code live show is a separate directory in this repository, and each directory contains a README file with detailed instructions, along with any necessary configuration files or sample code. Whether you're new to DevOps or an experienced practitioner, this lab will help you take your skills to the next level and give you the confidence to tackle real-world challenges.
 
-### 第二季鉴宝活动的鉴宝人火热招募中，请提交你的分享思路到：[MKT4D issues](https://github.com/DevopsChina/mkt4d/issues)
+### 第二季鉴宝活动的鉴宝人火热招募中，请提交你的分享思路到：[MKT4D issues](https://github.com/DevopsChina/MKT4D/issues/new/choose)
 
 ## 活动简介
 
