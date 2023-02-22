@@ -1,0 +1,12 @@
+interface ge1/0/0
+ description gen by nornir
+undo shutdown
+interface ge1/0/1
+ description gen by nornir
+undo shutdown
+interface ge1/0/2
+ description gen by nornir
+undo shutdown
+interface ge1/0/3
+ description gen by nornir
+undo shutdown

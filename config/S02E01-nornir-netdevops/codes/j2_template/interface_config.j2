@@ -1,0 +1,12 @@
+{% for intf in data.interface -%}
+interface {{ intf['name'] }}
+ description {{ intf.desc }}
+{% if intf.shutdown=='yes' -%}
+shutdown
+{% elif intf.shutdown=='no' -%}
+undo shutdown
+{% else -%}
+请人工确认端口状态配置
+{% endif -%}
+{% endfor -%}
+commit

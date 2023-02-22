@@ -1,0 +1,19 @@
+---
+huawei:
+  platform: huawei
+  username: netdevops
+  password: Admin123~
+  port: 22
+  connection_options:
+    netmiko:
+      extras:
+         timeout: 120
+         conn_timeout: 20
+  data:
+    backup_cmds:
+      - display version
+      - display current-configuration
+
+beijing:
+  data:
+    city: beijing
