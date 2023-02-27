@@ -1,0 +1,12 @@
+---
+netdevops01:
+  hostname: 192.168.137.201
+  groups:
+    - huawei
+    - beijing
+
+netdevops02:
+  hostname: 192.168.137.202
+  groups:
+    - huawei
+    - beijing
