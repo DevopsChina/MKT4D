@@ -38,7 +38,7 @@ typora-root-url: ./images
 
 ## NetDevOps工具链
 在NetDevOps逐渐流行的过程中，逐渐演化出了一条针对网络工程师的NetDevOps工具链。
-![](../images/netdevops工具生态.png)
+![](images/netdevops工具生态.png)
 
 paramiko、netmiko、napalm、textfsm等的流行，促进了网络运维工程师对Python的掌握和使用。
 
