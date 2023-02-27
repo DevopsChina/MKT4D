@@ -65,7 +65,7 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 ![image-20230220214315776](/../assets/image-20230220214315776.png)
 
-## 与ansible的对比 
+## 与 Ansible 的对比 
 虽然它自比flask  但是我们还是习惯地将其与ansible对比。
 
 | **对比项目**       | **nornir**                            | **ansible**                                 |
@@ -79,13 +79,14 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 
 
-![ansible playbook](../images/ansible_playbook.png)
+![ansible playbook](images/ansible_playbook.png)
 
-<img src="images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
+
+![nornir runbook](images/nornir_runbook.png)
 
 运行结果比对：
 
-<img src="images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
+![nornir runbook](images/ansible-nornir-speed-both.png)
 
 
 
