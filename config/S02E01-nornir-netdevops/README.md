@@ -26,7 +26,7 @@
 
 ## NetDevOps工具链
 在NetDevOps逐渐流行的过程中，逐渐演化出了一条针对网络工程师的NetDevOps工具链。
-![](./images/netdevops工具生态.png)
+![](images/netdevops工具生态.png)
 
 paramiko、netmiko、napalm、textfsm等的流行，促进了网络运维工程师对Python的掌握和使用。
 
@@ -51,13 +51,13 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 **Logo**
 
-<img src="./images/nornir_logo_02.jpg" style="zoom: 50%;" />
+<img src="images/nornir_logo_02.jpg" style="zoom: 50%;" />
 
 **Nornir的架构示意图：**
 
-![](./images/framework.png)
+![framework](images/framework.png)
 
-## 与ansible的对比 
+## 与 Ansible 的对比 
 虽然它自比flask  但是我们还是习惯地将其与ansible对比。
 
 | **对比项目**       | **nornir**                            | **ansible**                                 |
@@ -71,13 +71,13 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 
 
-![ansible playbook](./images/ansible_playbook.png)
+![ansible playbook](images/ansible_playbook.png)
 
-<img src="./images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
+<img src="images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
 
 运行结果比对：
 
-<img src="./images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
+<img src="images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
 
 
 
@@ -383,7 +383,7 @@ if __name__ == '__main__':
 
 执行结果的打印使用的是print_result，打印的格式也与ansible非常相似。但是有一点，当我们看到打印结果的时候，实际上指定任务已经执行结束。
 
-![](./images/nornir-result.png)
+![](images/nornir-result.png)
 
 如果想实时打印结果，需要在task函数中打印，会有代码侵入。
 
@@ -481,7 +481,7 @@ print_result(results)
 
 ```
 
-![](./images/nornir-result-2.png)
+![](images/nornir-result-2.png)
 
 #### 3.5 Nornir的结果对象
 
@@ -608,7 +608,7 @@ nornir_jinja2中还集成了jinja2的相关功能，可以实现配置标准化�
 
 表格参考j2_data中的以设备hostname命名的Excel文件，此处使用pandas进行了读取，处理成了字典。
 
-![image](./images/tables.png)
+![image](images/tables.png)
 
 通过这段代码我们可以将Excel中的数据加载成字典：
 
