@@ -81,11 +81,11 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 ![ansible playbook](../images/ansible_playbook.png)
 
-<img src="../images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
+<img src="images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
 
 运行结果比对：
 
-<img src="../images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
+<img src="images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
 
 
 
@@ -491,7 +491,7 @@ print_result(results)
 
 ```
 
-![](../images/nornir-result-2.png)
+![](images/nornir-result-2.png)
 
 #### 3.5 Nornir的结果对象
 
@@ -618,7 +618,7 @@ nornir_jinja2中还集成了jinja2的相关功能，可以实现配置标准化�
 
 表格参考j2_data中的以设备hostname命名的Excel文件，此处使用pandas进行了读取，处理成了字典。
 
-![image](../images/tables.png)
+![image](images/tables.png)
 
 通过这段代码我们可以将Excel中的数据加载成字典：
 
