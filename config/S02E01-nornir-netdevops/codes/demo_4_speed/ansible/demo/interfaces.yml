@@ -1,0 +1,5 @@
+---
+interfaces:
+      - ['Ethr1/50','configed by ansible templates'] 
+      - ['Ethr1/51','configed by ansible templates'] 
+      - ['Ethr1/52','configed by ansible templates'] 

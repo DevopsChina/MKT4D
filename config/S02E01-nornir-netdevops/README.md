@@ -1,30 +1,18 @@
----
-typora-root-url: ./images
----
-
 # NetDevOps自动化框架Nornir
 
 一款基于Python开发的，靠基于python代码运行的、灵活、高效、扩展性强的网络专属的配置自动化框架，是当前NetDevOps非常有潜力、不可或缺的工具之一。要讲解它，我们需要先简单了解NetDevOps。
 
 # NetDevOps简介
 
-
-
 ##  netdevops的产生
 ### 背景
-随着 IT 科技的不断发展，尤其是虚拟化技术和云计算的迅速崛起，网络也从技术、架构到运维都发生了显著的变化，其中非常直观的感受就是：
-
 1. 运维体量的增大
 2. 运维管理的细化
-3. 运维响应的敏捷化。
-
-这三者的叠加，导致了网络运维遇到了前所未有的困难，网络工程师面对如山的、海量的运维对象和众多的运维需求的同时，技术也不断迭代，在这种困窘之境下还要做到迅速响应。如何破局自救，成为了很多网络运维群体面临的重大课题之一。
+3. 运维响应的敏捷化
 
 ### 时间、人物、地点、事件
 
-在这样一个大背景之下，**2014 年**，在**网工圈**刮起了一股 NetDevOps 的风潮，**从个人到组织**，大家在同一个时间段，自下而上地分享如何用 Python 开发、开源的自动化工具提升提高网络运维效能。
-
-愈演愈烈的 NetDevOps 之风从国外吹到了国内，从民间吹到了几大厂商。很多厂商都推出了自己的设备的SDK，比如思科、Juniper、博科等等。有野心的网络设备商也纷纷推出了自己的 **NetDevOps 认证体系**，虽然他们有着不同的名称，比如思科的 **Cisco Certified DevNet Associate**、华为的 **HCIP-Datacom-Network Automation Developer**。
+**2014 年**，在**网工圈**刮起了一股 NetDevOps 的风潮，**从个人到组织**，大家在同一个时间段，自下而上地分享如何用 Python 开发、开源的自动化工具提升提高网络运维效能。
 
 ### 我眼中的NetDevOps：
 
@@ -55,15 +43,19 @@ NetDevOps生态工具的流行也在一定程度上妨碍了网络运维工程�
 # Nornir之旅
 ## Nornir简介
 
-官方的描述：Nornir is an **automation framework written in python** to be **used with python**. Most automation frameworks hide the language they are written in by using some cumbersome pseudo-language（大而笨重的伪代码） which usually is almost Turing complete, but lacks tooling to **debug and troubleshoot**. **Integrating** with other systems is also usually quite hard as they usually have complex APIs if any at all. Some of the other common problems of those pseudo-languages is that are usually quite bad at dealing with data and re-usability is limited.
+**官方的描述**：Nornir is an **automation framework written in python** to be **used with python**. Most automation frameworks hide the language they are written in by using some cumbersome pseudo-language（大而笨重的伪代码） which usually is almost Turing complete, but lacks tooling to **debug and troubleshoot**. **Integrating** with other systems is also usually quite hard as they usually have complex APIs if any at all. Some of the other common problems of those pseudo-languages is that are usually quite bad at dealing with data and re-usability is limited.
 
 Nornir aims to solve those problems by providing a pure python framework. Just imagine Nornir as the Flask of automation. Nornir will take care of dealing with the inventory where you have your host information, it will take care of dispatching the tasks to your devices and will provide a common framework to write “plugins”.
 
 一款基于Python开发的，靠基于python代码运行的、灵活、高效、扩展性强的网络专属的配置自动化框架。它对网络设备的纳管是无代理模式的，主要通过SSH对网络设备纳管，实际我们可以编写任意连接管理插件来实现对网络设备的管理。
 
+**Logo**
+
+<img src="images/nornir_logo_02.jpg" style="zoom: 50%;" />
+
 **Nornir的架构示意图：**
 
-![image-20230220214315776](/../assets/image-20230220214315776.png)
+![framework](images/framework.png)
 
 ## 与 Ansible 的对比 
 虽然它自比flask  但是我们还是习惯地将其与ansible对比。
@@ -81,16 +73,13 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 ![ansible playbook](images/ansible_playbook.png)
 
-
-![nornir runbook](images/nornir_runbook.png)
+<img src="images/nornir_runbook.png" alt="nornir脚本" title="nornir的脚本" style="zoom:50%;" />
 
 运行结果比对：
 
-![nornir runbook](images/ansible-nornir-speed-both.png)
+<img src="images/ansible-nornir-speed-both.png" alt="运行结果比对" title="运行结果比对" style="zoom:50%;" />
 
 
-
-## 
 
 ## Nornir的安装
 
@@ -142,7 +131,7 @@ python -m pip show nornir  nornir_utils nornir_netmiko  netmiko  pandas openpyxl
 
 ## 第一个Nornir Runbook
 
-### 1 定义inventory
+### 1. 定义inventory
 
 记录众多主机信息，分为主机（hosts）、主机分组（groups）、默认参数（defaults）三块信息，通过是哪个文件进行定义，分别为hosts.yaml、groups.yaml、defaults.yaml。主机在这里主要指的是网络设备。
 
@@ -247,7 +236,7 @@ data:
 
 以上三个文件hosts.yaml是必须定义的，其他文件是按需定义的。定义好之后，一般将这三个文件放到inventory文件夹内。
 
-### 2 初始化Nornir对象
+### 2. 初始化Nornir对象
 
 当我们编辑好inventory文件之后，我们就可以通过配置文件加载一个nornir对象，然后筛选网络设备，对指定的网络设备进行批量操作（执行task函数）。
 
@@ -300,7 +289,7 @@ if __name__ == '__main__':
 
 
 
-#### 2.2 筛选网络设备
+#### 2.3 筛选网络设备
 
 我们可以通过Nornir提供的灵活筛选的函数，对Nornir对象调用筛选方法，灵活筛选网络设备。
 
@@ -394,7 +383,7 @@ if __name__ == '__main__':
 
 执行结果的打印使用的是print_result，打印的格式也与ansible非常相似。但是有一点，当我们看到打印结果的时候，实际上指定任务已经执行结束。
 
-![](../images/nornir-result.png)
+![](images/nornir-result.png)
 
 如果想实时打印结果，需要在task函数中打印，会有代码侵入。
 
@@ -552,9 +541,9 @@ if __name__ == '__main__':
 
 # coding Time
 
-### 网络配置备份
+### 1. 网络配置备份
 
-#### 1 登录设备执行命令
+#### 1.1  登录设备执行命令
 
 调用nornir_netmiko的netmiko_send_command task函数，发送命令。其参数说明可以通过Pycharm等IDE下钻到对应文件查看。
 
@@ -570,7 +559,7 @@ if __name__ == '__main__':
 
 ```
 
-#### 2 设备回显写入文件
+#### 1. 2 设备回显写入文件
 
 我们可以自己编写写入文件的task函数，然后组合调用发送命令和写文件的task函数即可。
 
@@ -608,7 +597,7 @@ if __name__ == '__main__':
 
 
 
-### 批量配置生成
+### 2. 批量配置生成
 
 
 nornir_jinja2中还集成了jinja2的相关功能，可以实现配置标准化。
@@ -719,7 +708,7 @@ if __name__ == '__main__':
 
 
 
-### 批量配置推送
+### 3. 批量配置推送
 
 一些无交互的网络配置，且每台网络设备的配置完全一致，我们通过nornir_netmiko，可以进行批量配置推送。
 
@@ -790,7 +779,7 @@ if __name__ == '__main__':
 
 
 
-## 总结
+## 总结：
 
 希望这次分享达到的目标：
 
@@ -798,4 +787,21 @@ if __name__ == '__main__':
 2. Nornir的安装
 3. Nornir的基本概念及简单runbook的编写
 4. 逐步掌握编写自己的Nornir Runbook
+
+## 参考链接：
+
+1. 官方文档：https://nornir.readthedocs.io/en/latest/
+
+2. 个人笔记： 
+
+​				NetDevOps 学习目录：https://zhuanlan.zhihu.com/p/576874066
+
+​				Nornir笔记：https://zhuanlan.zhihu.com/p/589562446
+
+3. 姜知笔记：https://www.gingerdoc.com/nornir%e7%bd%91%e7%bb%9c%e8%87%aa%e5%8a%a8%e5%8c%96
+4. 小五笔记：https://nornir-docs-cn.readthedocs.io/en/latest/index.html
+5. Ansible vs Nornir  https://www.packetcoders.io/ansible-vs-nornir/
+6. Ansible vs Nornir 速度大比拼 https://www.bilibili.com/video/BV1Tp4y1k7mD/
+
+
 
