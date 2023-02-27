@@ -1,0 +1,14 @@
+---
+- name: 根据模板和变量生成配置文件01-变量内置到playbook
+  hosts: all  # filter网络设备
+  gather_facts: no # 收集设备的一些基础信息。比如端口、版本、平台等等，耗费时间，大家都选择不调用
+  # 给内置变量var_files赋值我们的变量文件 
+  vars_files:
+    - interfaces.yml
+
+
+  tasks:
+    - name: 批量生成配置
+      template:
+        src: interfaces.j2
+        dest: /tmp/{{ansible_host}}_var_file.config

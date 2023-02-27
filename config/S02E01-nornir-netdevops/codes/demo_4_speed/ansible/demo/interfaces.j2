@@ -1,0 +1,7 @@
+configure terminal
+{% for intf in  interfaces %}
+{{ intf[0] }}
+description {{ intf[1]}}
+{% endfor %}
+
+wr
