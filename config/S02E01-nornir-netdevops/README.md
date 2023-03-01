@@ -1,18 +1,21 @@
 # NetDevOps自动化框架Nornir
 
-一款基于Python开发的，靠基于python代码运行的、灵活、高效、扩展性强的网络专属的配置自动化框架，是当前NetDevOps非常有潜力、不可或缺的工具之一。要讲解它，我们需要先简单了解NetDevOps。
+一款基于Python开发的，基于python代码运行的、灵活、高效、扩展性强的网络专属的配置自动化框架，是当前 NetDevOps 领域非常有潜力、不可或缺的工具之一。
 
 # NetDevOps简介
 
-##  netdevops的产生
+##  NetDevOps的产生
 ### 背景
+
+针对网络运维而言：
+
 1. 运维体量的增大
 2. 运维管理的细化
 3. 运维响应的敏捷化
 
 ### 时间、人物、地点、事件
 
-**2014 年**，在**网工圈**刮起了一股 NetDevOps 的风潮，**从个人到组织**，大家在同一个时间段，自下而上地分享如何用 Python 开发、开源的自动化工具提升提高网络运维效能。
+**2014 年**，在**网工圈**刮起了一股 NetDevOps 的风潮，**从个人到组织**，大家在同一个时间段，自下而上地分享如何用 Python 开发、开源的自动化工具提升提高网络运维效能。一些网络设备厂商也在他们的认证体系中加入了NetDevOps相关的认证。
 
 ### 我眼中的NetDevOps：
 
@@ -20,7 +23,7 @@
 
 **主体**：网络工程师
 
-**技能**：以Python为开发语言，叠加现有的开源工具，分阶段借鉴DevOps的思想
+**技能**：以 Python 为开发语言，叠加现有的开源工具，分阶段借鉴DevOps的思想
 
 **目标**：提高网络运维效率
 
@@ -28,17 +31,17 @@
 在NetDevOps逐渐流行的过程中，逐渐演化出了一条针对网络工程师的NetDevOps工具链。
 ![](images/netdevops工具生态.png)
 
-paramiko、netmiko、napalm、textfsm等的流行，促进了网络运维工程师对Python的掌握和使用。
+paramiko、**netmiko**、napalm、**textfsm**等的流行，促进了网络运维工程师对 Python 的掌握和使用。
 
 
 
 ## Nornir的诞生
 
-NetDevOps生态工具的流行也在一定程度上妨碍了网络运维工程师对Ansible的选择，正是大家对于Python过于熟悉，以及这些便利的NetDevOps工具生态，导致大部分网络运维工程师始终在以Python为核心的理念中实践NetDevOps。
+NetDevOps生态工具的流行也在一定程度上妨碍了网络运维工程师对 Ansible 的选择，正是大家对于 Python 过于熟悉，以及这些便利的NetDevOps工具生态，导致大部分网络运维工程师始终在以 Python 为核心的理念中实践NetDevOps。
 
 而在这个工具链条中，缺失了一个网络配置批量自动化工具，让用户聚焦网络运维业务逻辑及其编排。
 
-而Nornir正是弥补这个工具链中的这一环节。
+Nornir弥补了这个工具链中的这一环节。
 
 # Nornir之旅
 ## Nornir简介
@@ -81,6 +84,18 @@ Nornir aims to solve those problems by providing a pure python framework. Just i
 
 
 
+运行结果比对2：
+
+500台host，根据jinja2的模板和yaml数据批量生成配置。
+
+ansible结果：<img src="images/ansible_j2.jpg" alt="运行结果比对" title="运行结果比对"  />
+
+nornir结果：<img src="images/nr_j2.jpg" alt="运行结果比对" title="运行结果比对" style="zoom:80%;"/>
+
+也可以通过文末的链接，查看一位博主的比对视频。
+
+
+
 ## Nornir的安装
 
 本教程使用 pip 在win10上安装Nornir
@@ -99,7 +114,9 @@ Windows下安装可以参考https://zhuanlan.zhihu.com/p/523912031
 
  **纳管节点：**
 
-任意2台以上网络设备（使用网络模拟器即可），系统运维工程师如果想体验，也可以将纳管节点替换为2台以上的Linux虚机。
+任意2台以上网络设备（使用网络模拟器即可）。
+
+系统运维工程师如果想体验，也可以将纳管节点替换为2台以上的Linux虚机，host.yaml 中的 platform字段要改为linux。
 
 所有设备需要SSH可达，当前账户需要拥有取消网络设备回显分页的权限（Linux系统可以忽视）。
 
@@ -133,7 +150,7 @@ python -m pip show nornir  nornir_utils nornir_netmiko  netmiko  pandas openpyxl
 
 ### 1. 定义inventory
 
-记录众多主机信息，分为主机（hosts）、主机分组（groups）、默认参数（defaults）三块信息，通过是哪个文件进行定义，分别为hosts.yaml、groups.yaml、defaults.yaml。主机在这里主要指的是网络设备。
+记录众多主机信息，分为主机（hosts）、主机分组（groups）、默认参数（defaults）三块信息，通过三个文件进行定义，分别为hosts.yaml、groups.yaml、defaults.yaml。主机在这里主要指的是网络设备。
 
 #### hosts
 
@@ -347,7 +364,7 @@ task是一个可以对单台网络设备反复使用的符合Nornir规范的函�
 定义规则：
 
 1. 函数的定义方式，可以有多个参数，也可以无参数。
-2. 第一个参数代表一台网络设备执行情况的上下文，官网约定俗称为task，笔者建议使用task_context，防止与task函数混淆。
+2. 第一个参数代表一台网络设备执行情况的上下文，官网约定俗成命名为task，笔者建议使用task_context，防止与task函数混淆。
 3. 返回结果为 nornir.core.task.Result 对象。
 
 ```python
@@ -612,7 +629,7 @@ nornir_jinja2中还集成了jinja2的相关功能，可以实现配置标准化�
 
 通过这段代码我们可以将Excel中的数据加载成字典：
 
-```
+```python
 def get_complex_data_from_excel(file='data.xlsx'):
     # 通过表格获取数据，参考jinja2篇章代码
     data = {}
@@ -641,7 +658,7 @@ commit
 
 编写task函数gen_config_by_j2，读取数据，渲染模板，写入到指定文件夹。
 
-```
+```python
 from pathlib import Path
 
 import pandas as pd
@@ -777,6 +794,60 @@ if __name__ == '__main__':
 
 ```
 
+### 4. 配置信息提取
+
+我们还可以进行相关信息的提取，这里使用到了 TextFSM ，一款谷歌开源的SRE利器，可以从半结构化文本中提取出结构化数据。
+
+Netmiko整合了这个工具，发送命令的时候可以指定模板提取出格式化数据（字典的列表）。
+
+我们使用nornir_netmiko的netmiko_send_command task函数即可，传入三个重要参数：
+
+1. command_string，执行的命令
+2. use_textfsm ，设置为True。
+3. textfsm_template，解析模板路径。
+
+代码如下：
+
+```python
+from pathlib import Path
+
+from nornir import InitNornir
+from nornir.core.task import Result
+from nornir_utils.plugins.functions import print_result
+from nornir_netmiko import netmiko_send_command
+
+
+def parse_data(task_context, cmd, textfsm_templ):
+    """
+    执行指定命令，将配置回显中的数据使用textfsm进行提取
+    Args:
+        cmd: 执行的命令
+        textfsm_templ: 解析模板
+
+    Returns:
+        解析后的数据
+
+    """
+    host_task_result_obj = task_context.run(netmiko_send_command,
+                                            command_string=cmd,
+                                            use_textfsm=True,
+                                            textfsm_template=textfsm_templ)
+    data = host_task_result_obj[0].result
+    return Result(host=task_context.host, result=data)
+
+
+if __name__ == '__main__':
+    nr = InitNornir(config_file="nornir.yaml")
+    result = nr.run(task=parse_data,
+                    cmd='display interface brief',
+                    textfsm_templ='huawei_display_interface_brief.textfsm',
+                    name='解析端口列表')
+    print_result(result)
+
+```
+
+在这里我们可以结合处理器，或者在task函数当中直接将数据保存到表格、数据库当中。
+
 
 
 ## 总结：
@@ -802,6 +873,7 @@ if __name__ == '__main__':
 4. 小五笔记：https://nornir-docs-cn.readthedocs.io/en/latest/index.html
 5. Ansible vs Nornir  https://www.packetcoders.io/ansible-vs-nornir/
 6. Ansible vs Nornir 速度大比拼 https://www.bilibili.com/video/BV1Tp4y1k7mD/
+7. Nornir插件库 https://nornir.tech/nornir/plugins/ 
 
 
 

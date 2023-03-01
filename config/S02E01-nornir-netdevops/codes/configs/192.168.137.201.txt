@@ -10,3 +10,4 @@ undo shutdown
 interface ge1/0/3
  description gen by nornir
 undo shutdown
+commit

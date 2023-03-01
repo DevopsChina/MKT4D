@@ -1,0 +1,13 @@
+Value Name (\S+)
+Value PhyState (\S+)
+Value ProtocolState (\S+)
+Value InUti (\S+)
+Value OutUti (\S+)
+Value InErrors (\S+)
+Value OutErrors (\S+)
+
+Start
+ ^Interface                  PHY      Protocol  InUti OutUti   inErrors  outErrors -> Interface
+
+Interface
+ ^${Name}\s+${PhyState}\s+${ProtocolState}\s+${InUti}\s+${OutUti}\s+${InErrors}\s+${OutErrors} -> Record
