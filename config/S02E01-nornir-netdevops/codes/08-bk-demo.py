@@ -8,12 +8,13 @@ from nornir_utils.plugins.tasks.files import write_file
 
 
 def config_backup(task_context):
-    cmds = task_context.host.data['cmds']
-    cmds = cmds.split(',')
+    # data中的信息需要通过host对象的get方法获取，其他hostname等可以直接用属性的方式获取
+    cmds = task_context.host.get('backup_cmds')
     date_str = date.today().strftime('%Y%m%d')
     ip = task_context.host.hostname
     for cmd in cmds:
-        cmd_multi_result_objs = task_context.run(task=netmiko_send_command, command_string=cmd)
+        cmd_multi_result_objs = task_context.run(task=netmiko_send_command,
+                                                 command_string=cmd)
         output = cmd_multi_result_objs[0].result
         filepath = '{}_{}_{}.txt'.format(date_str, ip, cmd)
         file_multi_result_objs = task_context.run(task=write_file,
